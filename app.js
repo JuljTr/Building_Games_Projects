@@ -1,6 +1,6 @@
 const selectBox = document.querySelector(".select-box");
-const selectXBtn = selectBox.querySelector(".playerX");
-const selectOBtn = selectBox.querySelector(".playerO");
+const selectBtnX = selectBox.querySelector(".playerX");
+const selectBtnO = selectBox.querySelector(".playerO");
 const playBoard = document.querySelector(".play-board");
 const allBox = document.querySelectorAll("section span");
 const players = document.querySelector(".players");
@@ -12,11 +12,11 @@ window.onload = () => {
         allBox[i].setAttribute("onclick","clickedBox(this)")
         
     }
-    selectXBtn.onclick = () => {
+    selectBtnX.onclick = () => {
         selectBox.classList.add("hide");
         playBoard.classList.add("show");
     }
-    selectOBtn.onclick = () => {
+    selectBtnO.onclick = () => {
         selectBox.classList.add("hide");
         playBoard.classList.add("show");
         players.setAttribute("class", "players active player")
@@ -28,8 +28,11 @@ let playerOIcon = "far fa-circle";
 
 function clickedBox(element){
     if(players.classList.contains("player")){
-        element.inneHTML = `<i class="${playerOIcon}"></i>`;
+        element.innerHTML = `<i class="${playerOIcon}"></i>`;
+        players.classList.add("active");
     }else {
-        element.inneHTML = `<i class="${playerXIcon}"></i>`;
+        element.innerHTML = `<i class="${playerXIcon}"></i>`;
+        players.classList.add("active");
     }
+    element.style.pointerEvents ="none";
 }
